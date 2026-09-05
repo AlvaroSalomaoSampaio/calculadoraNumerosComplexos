@@ -55,6 +55,7 @@ public class NumeroComplexo {
         }
     }
     
+    
     public String multiplicar(double valorRealOutro, double valorImaginarioOutro) {
         if (valorImaginario * valorImaginarioOutro>=0) {
             return (double) valorReal - valorRealOutro + " +" + (double) (valorImaginario - valorImaginarioOutro) + " * i"; 
