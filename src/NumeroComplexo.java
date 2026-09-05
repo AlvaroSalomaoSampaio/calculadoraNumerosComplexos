@@ -2,6 +2,7 @@ public class NumeroComplexo {
     private String valor;
     private double valorReal;
     private double valorImaginario;
+    private String valorOutro;
 
     public NumeroComplexo(double valorReal, double valorImaginario) {
         this.valorReal = valorReal;
@@ -39,6 +40,10 @@ public class NumeroComplexo {
         return valorImaginario;
     }
 
+    public String getValorOutro() {
+        return  valorOutro;
+    }
+
     public String somar(double valorRealOutro, double valorImaginarioOutro) {
         if (valorImaginario + valorImaginarioOutro>=0) {
             return (double) valorReal + valorRealOutro + " +" + (double) (valorImaginario + valorImaginarioOutro) + " * i"; 
@@ -54,11 +59,21 @@ public class NumeroComplexo {
             return (double) valorReal - valorRealOutro + " -" + Math.abs((double) (valorImaginario - valorImaginarioOutro)) + " * i";
         }
     }
-    
+
     
     public String multiplicar(double valorRealOutro, double valorImaginarioOutro) {
+        if (valorImaginarioOutro==0) {
+            System.out.println("Seu número imaginário não pode ser igual a 0.");
+        } else if (valorImaginario > 0) {
+            this.valorOutro = valorRealOutro + " +" + valorImaginarioOutro + " * i";
+        } else {
+            this.valorOutro = valorRealOutro + " -" + Math.abs(valorImaginarioOutro) + " * i";
+        }
+        System.out.println("("+getValor()+") * ("+getValorOutro()+") =");
         if (valorImaginario * valorImaginarioOutro>=0) {
-            return (double) valorReal - valorRealOutro + " +" + (double) (valorImaginario - valorImaginarioOutro) + " * i"; 
+            return (double) valorReal * valorRealOutro + " +" + (double) (valorImaginario * valorImaginarioOutro); 
+        } else {
+            return (double) valorReal * valorRealOutro + " -" + Math.abs((double) (valorImaginario * valorImaginarioOutro));
         }
     }
 }
